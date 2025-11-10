@@ -1,102 +1,122 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/-cPJVYMd)
-Django ORM Standalone
-=====================
+# Assignment 3: Cash Register using Django-ORM
 
-![Django](https://img.shields.io/badge/Django_ORM-Standalone-blue)
-![Python](https://img.shields.io/badge/Python-yellow)
+This assignment implements key functionalities of a cash register application using the **Django Object-Relational Management (ORM)** feature.
 
-Use the database components of Django without having to use the rest of Django (i.e. running a web server)! :tada: A typical use case for using this template would be if you are writing a python script and you would like the database functionality provided by Django, but have no need for the request/response functionalty of a client/server web application that Django also provides. 
+## Group 5 Contribution Summary
 
-With this project template you can write regular python scripts and use Django's excellent ORM functionality with the database backend of your choice. This makes it convienient for Djangonauts to write database driven python applications with the familiar and well polished Django ORM. Enjoy.
+**Members:** Eesha Razia, Sayyeda Faruqui
 
-:gear: Requirements
--------------------
-- Last tested successfully with Python 3.10.4 and Django 5.0.6
-- Create venv and pip install django to import the required modules.
+| Member | Contribution |
+| :--- | :--- |
+| **Eesha Razia** | Q1 Code Implementation, README.MD Organization and Formatting |
+| **Sayyeda Faruqui** | Repository Organization (File Uploads), README.MD Organization and Formatting, Q2 Completion and Submission on Canvas |
 
-:open_file_folder: File Structure
----------------------------------
-```
-django-orm/
-├── db/
-│   ├── __init__.py
-│   └── models.py
-├── main.py
-├── manage.py
-├── README.md
-└── settings.py
-```
+*Both members reviewed each other's work and supported each other throughout the assignment.*
 
-__The main.py file is the entry point for the project, and where you start your code. You automatically get access to your models via ```from db.models import *```
-Think of it like a plain old python file, but now with the addition of Django's feature-rich models.__ :smiling_face_with_three_hearts:
+---
 
-__The db/models.py is where you configure your typical Django models.__ There is a toy user model included as a simple example. After running the migrations command in the quick setup below, a db.sqlite3 file will be generated. The settings.py file is where can swap out the sqlite3 database for another database connection, such as Postgres or AmazonRDS, if you wish. For most applications, sqlite3 will be powerful enough. But if you need to swap databases down the road, you can easily do so, which is one of the benefits of using the Django ORM. 
+## 1. Repository Organization and Django-ORM Use (Q1-Code)
 
-:rocket: Quick Setup
---------------------
-Create a folder for your project on your local machine
-```
-mkdir myproject; cd myproject
-```
-Create a virtual environment and install django
-```
-python -m venv venv; source venv/bin/activate; pip install django
-```
-Download this project template from GitHub
-```
-git clone git@github.com:dancaron/Django-ORM.git; cd Django-ORM
-```
-Initialize the database
-```
-python manage.py makemigrations db; python manage.py migrate
-```
-Run the project
-```
-python main.py
-```
+This section addresses the Q1-Code Organization and Django ORM rubric criterion. The project is based on the provided Django-ORM startup code, modified for a complete web application structure to demonstrate ORM functionality via a simple UI.
 
-Feel free to send pull requests if you want to improve this project.
+### Key Files and Directory Structure
 
-:crystal_ball: Example
-----------------------
-After running Quick Start above: 
+The following files show the structure and implementation of the required cash register functionality:
 
-Code in db/models.py:
-```
-# Sample User model
-class User(models.Model):
-    name = models.CharField(max_length=50, default='Dan')
+| File/Directory | Description | Django-ORM Use |
+| :--- | :--- | :--- |
+| **`register/models.py`** | Defines the Product model, which maps the product UPC, Name, and Price to the database table. | **Model Definition** |
+| **`register/views.py`** | Contains the logic for populating the database and handling the product "scan" (lookup) request from the UI. | **Query Execution** |
+| **`register/scan.html`** | The UI template containing the input box for the UPC and the display area for the resulting product details. | **Presentation** |
+| **`products.json`** | Source file used to populate the initial product data into the database (Fixture). | **Data Source** |
+| **`manage.py` & `settings.py` & `urls.py`** | Core Django files configured to recognize the register app and handle routing to the scan.html view. | **Framework Configuration** |
 
-    def __str__(self):
-        return self.name
-```
-Code in main.py:
-```
-# Seed a few users in the database
-User.objects.create(name='Dan')
-User.objects.create(name='Robert')
+<img width="1302" height="554" alt="image" src="https://github.com/user-attachments/assets/f5907869-d988-46f6-ac6a-4107446a8b02" />
 
-for u in User.objects.all():
-    print(f'ID: {u.id} \tUsername: {u.name}')
-```
-Output from command: ```python main.py```
-```
-ID: 1	Username: Dan
-ID: 2	Username: Robert
-```
 
-:mortar_board: Django Models
-----------------------------
+---
 
-Link: [How to Use Django Models](https://docs.djangoproject.com/en/3.1/topics/db/models/)
+## 2. Setup and Execution Instructions
 
-License
--------
+To run and test the application, follow these steps:
 
-The MIT License (MIT) Copyright (c) 2024 Dan Caron
+### A. Environment Setup
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+1.  **Clone the Repository:**
+    ```bash
+    git clone [https://github.com/OTUSOFE365025/assignment-3-django-and-energy-group-5-crn-43510.git](https://github.com/OTUSOFE365025/assignment-3-django-and-energy-group-5-crn-43510.git)
+    cd assignment-3-django-and-energy-group-5-crn-43510
+    ```
+2.  **Set Up Virtual Environment:**
+    ```bash
+    python -m venv venv
+    ```
+    *Activate:*
+    ```bash
+    # Windows: venv\Scripts\activate
+    # Linux/macOS: source venv/bin/activate
+    ```
+3.  **Install Django:**
+    ```bash
+    pip install django
+    ```
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+### B. Running the Application
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+4.  **Database Migration & Population:**
+    The `register` app uses a migration file (e.g., `register/migrations/0001_initial.py`) to create the Product database table. The database is populated with initial product data from the `products.json` file, which is formatted as a Django fixture.
+
+    Run the standard Django setup and then the fixture load command:
+    ```bash
+    # 1. Apply migrations to create the Product table
+    python manage.py migrate
+
+    # 2. Load the initial data from the fixture file
+    python manage.py loaddata products.json
+    ```
+5.  **Run the Server:**
+    ```bash
+    python manage.py runserver
+    ```
+    Access the application at the root URL: `http://127.0.0.1:8000/`
+
+---
+
+## 3. Demonstration of Functionality (Q1-Demonstration)
+
+This section addresses the Q1-Demonstration rubric criterion and includes the submission of screen dumps/images. The implementation covers two aspects of the cash register application using Django-ORM:
+
+### A. Populating the Database
+
+The database is populated with product UPC codes, Names, and prices.
+
+**Evidence (views.py code snippet):**
+
+<img width="1279" height="465" alt="image" src="https://github.com/user-attachments/assets/9da6a0f8-0ac6-408b-8011-b5d9e8d24bc9" />
+
+
+### B. Scanning a Product and Displaying Details
+
+The web interface simulates the scanning of a product (via an input box) and displays the product name and price. This demonstrates a read operation using the ORM.
+
+**Evidence:**
+
+1.  **Initial View:** Screenshot of the `scan.html` interface showing the UPC input box and an empty result display before a scan.
+     <img width="1324" height="355" alt="image" src="https://github.com/user-attachments/assets/a2581c30-fe59-4ede-8606-f3130a27b0c7" />
+
+
+2.  **Successful Scan:** Screenshot showing a valid UPC entered into the input box and the resulting Product Name and Price displayed clearly after submission.
+    <img width="1313" height="438" alt="image" src="https://github.com/user-attachments/assets/7e669e9b-2964-4ef6-852d-0e1f813ff9dc" />
+
+
+3.  **Error Handling:** Screenshot showing an invalid UPC entered and the application's appropriate response ("Product Not Found").
+    <img width="1341" height="364" alt="image" src="https://github.com/user-attachments/assets/db2f7ffa-1cf7-40f9-994d-fe998a6dc8ca" />
+
+---
+
+## 4. Q2: Energy Efficiency Scenario (Canvas Submission Reference)
+
+This section is a placeholder to acknowledge the second part of the assignment. **Q2 is submitted via the Canvas drop box.**
+
+* A concrete energy efficiency scenario for a smartphone app (e.g., a health monitoring app) was created based on the Energy Efficiency General Scenario table in the Appendix.
+* Two architectural/design tactics were identified, and their application and contribution to better energy efficiency were briefly explained.
