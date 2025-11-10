@@ -118,5 +118,5 @@ The web interface simulates the scanning of a product (via an input box) and dis
 
 This section is a placeholder to acknowledge the second part of the assignment. **Q2 is submitted via the Canvas drop box.**
 
-* A concrete energy efficiency scenario for a smartphone app (e.g., a health monitoring app) was created based on the Energy Efficiency General Scenario table in the Appendix.
+* A concrete energy efficiency scenario for a smartphone health monitoring app was created based on the Energy Efficiency General Scenario table in the Appendix.
 * Two architectural/design tactics were identified, and their application and contribution to better energy efficiency were briefly explained.
