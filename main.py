@@ -19,10 +19,6 @@ django.setup()
 # Import your models for use in your script
 from db.models import *
 
-############################################################################
-## START OF APPLICATION
-############################################################################
-""" Replace the code below with your own """
 
 # Seed a few users in the database
 User.objects.create(name='Dan')
