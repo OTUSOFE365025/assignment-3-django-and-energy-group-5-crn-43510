@@ -1,37 +1,51 @@
 from pathlib import Path
-
-# Build paths inside the project like this: BASE_DIR / 'sub_dir' 
 BASE_DIR = Path(__file__).resolve().parent
 
-# SECURITY WARNING: Modify this secret key if using in production!
-SECRET_KEY = "6few3nci_q_o@l1dlbk81%wcxe!*6r29yu629&d97!hiqat9fa"
+SECRET_KEY = "your-existing-secret-key"
+DEBUG = True
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
-# Use BigAutoField for Default Primary Key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+INSTALLED_APPS = [
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "register",  # your app
+]
+
+MIDDLEWARE = [
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+]
+
+ROOT_URLCONF = "urls"
+
+TEMPLATES = [{
+    "BACKEND": "django.template.backends.django.DjangoTemplates",
+    "DIRS": [],
+    "APP_DIRS": True,
+    "OPTIONS": {"context_processors": [
+        "django.template.context_processors.debug",
+        "django.template.context_processors.request",
+        "django.contrib.auth.context_processors.auth",
+        "django.contrib.messages.context_processors.messages",
+    ]},
+}]
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / 'db.sqlite3',
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
-
-"""
-To connect to an existing postgres database, first:
-pip install psycopg2
-then overwrite the settings above with:
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'YOURDB',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-"""
-
-INSTALLED_APPS = ("db",)
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# Static files (required if 'django.contrib.staticfiles' is installed)
+STATIC_URL = "static/"
