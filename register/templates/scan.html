@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>Cash Register – Scan</title></head>
+  <body style="font-family:Arial, sans-serif; margin:2rem;">
+    <h1>Cash Register</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.upc }}
+      <button type="submit">Scan</button>
+    </form>
+
+    <div style="margin-top:1rem; padding:1rem; border:1px solid #ddd; border-radius:8px;">
+      {% if product %}
+        <div><strong>{{ product.name }}</strong></div>
+        <div style="font-weight:700; font-size:1.25rem;">${{ product.price }}</div>
+        <div>UPC: {{ product.upc }}</div>
+      {% elif error %}
+        <div style="color:#b00020;">{{ error }}</div>
+      {% else %}
+        <em>Enter or scan a UPC to display item & price.</em>
+      {% endif %}
+    </div>
+  </body>
+</html>

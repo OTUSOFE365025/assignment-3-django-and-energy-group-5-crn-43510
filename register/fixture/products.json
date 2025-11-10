@@ -1,0 +1,18 @@
+[
+  {
+    "model": "register.product",
+    "pk": 1,
+    "fields": { "upc": "000111222333", "name": "Bread Loaf",   "price": "3.49" }
+  },
+  {
+    "model": "register.product",
+    "pk": 2,
+    "fields": { "upc": "123456789012", "name": "2% Milk 2L",   "price": "4.99" }
+  },
+  {
+    "model": "register.product",
+    "pk": 3,
+    "fields": { "upc": "789456123789", "name": "Eggs (Dozen)", "price": "5.29" }
+  }
+]
+
